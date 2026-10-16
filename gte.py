@@ -143,6 +143,24 @@ class GteModel:
         return embeddings
 
 _list_api = [
+"""MiniMax text to image
+```python
+import os
+import requests
+
+response = requests.post(
+    "https://api.minimax.io/v1/image_generation",
+    headers={
+        "Authorization": f"Bearer {os.environ['MINIMAX_API_KEY']}",
+        "Content-Type": "application/json",
+    },
+    json={"model": "image-01", "prompt": "{prompt}"},
+)
+response.raise_for_status()
+image_urls = response.json()["data"]["image_urls"]
+print('<|api_output|>'+image_urls[0])
+```
+""",
 """Text to image
 ```python
 from gradio_client import Client

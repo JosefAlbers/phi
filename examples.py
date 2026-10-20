@@ -73,6 +73,16 @@ agent('DVT ppx for this pt?')
 agent("The patient's prognosis?")
 agent.end()
 
+## LLM Backend Hotswap (MiniMax)
+agent = pv.Agent(toolchain = "responses, history = minimax_api(prompt, history)")
+agent('Write a neurology ICU admission note')
+agent.end()
+
+### Selecting a MiniMax model (MiniMax-M3.1-Flash is the default; MiniMax-M3 is also available)
+agent = pv.Agent(toolchain = "responses, history = minimax_api(prompt, history)", api_model="MiniMax-M3")
+agent('Write a neurology ICU admission note')
+agent.end()
+
 # Misc
 
 ## ICL
